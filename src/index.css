@@ -1,13 +1,214 @@
 body {
+  background: #87ceeb;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.runner-game {
+  width: 500px;
+  height: 200px;
+  background: #b3e0ff;
+  margin: 40px auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #3498db;
+}
+
+.character {
+  position: absolute;
+  left: 30px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  /* Remove background and border-radius for stick man */
+  background: none;
+  border-radius: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.character .head {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: #ffe0b2;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #222;
+}
+
+.character .body {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 4px;
+  height: 14px;
+  background: #222;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.character .arm {
+  position: absolute;
+  top: 20px;
+  width: 16px;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+}
+.character .arm.left {
+  left: 2px;
+  transform: rotate(-25deg);
+}
+.character .arm.right {
+  right: 2px;
+  transform: rotate(25deg);
+}
+
+.character .leg {
+  position: absolute;
+  top: 32px;
+  width: 14px;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+}
+.character .leg.left {
+  left: 7px;
+  transform: rotate(20deg);
+}
+.character .leg.right {
+  right: 7px;
+  transform: rotate(-20deg);
+}
+
+.obstacle {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 60px;
+  background: #222;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  z-index: 1;
+}
+
+.score {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 2px 8px #3498db;
+  z-index: 3;
+}
+
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.game-over-overlay h2 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.game-over-overlay p {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.game-over-overlay button {
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  background: #ffeb3b;
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.game-over-overlay button:hover {
+  background: #ffe066;
+}
+
+.cactus {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+  background: none;
+}
+.cactus-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 16px;
+  height: 48px;
+  background: #388e3c;
+  border-radius: 6px 6px 8px 8px;
+  transform: translateX(-50%);
+  border: 2px solid #256029;
+}
+.cactus-arm.left {
+  position: absolute;
+  left: 2px;
+  bottom: 24px;
+  width: 8px;
+  height: 18px;
+  background: #388e3c;
+  border-radius: 8px 8px 8px 8px;
+  border: 2px solid #256029;
+  transform: rotate(-20deg);
+}
+.cactus-arm.right {
+  position: absolute;
+  right: 2px;
+  bottom: 32px;
+  width: 8px;
+  height: 14px;
+  background: #388e3c;
+  border-radius: 8px 8px 8px 8px;
+  border: 2px solid #256029;
+  transform: rotate(20deg);
+}
+
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50% 50% 60% 40% / 60% 40% 50% 50%;
+  opacity: 0.8;
+  box-shadow: 20px 0 16px -8px #fff, 40px 0 24px -12px #fff;
+  z-index: 0;
 }
